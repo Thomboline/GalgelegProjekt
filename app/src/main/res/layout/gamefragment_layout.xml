@@ -1,40 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/softgreen">
 
     <TextView
         android:id="@+id/gameInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/gameWord"
-        android:layout_centerHorizontal="true"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/inputGuessBox"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:lines="1"
         android:maxLines="1"
         android:ems="10"
         android:layout_below="@+id/gameInfo"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:inputType="text"
+        android:imeOptions="actionSend"
+        android:textAlignment="center"
+        android:background="@drawable/simpleimageborder"/>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="320dp"
         app:srcCompat="@drawable/galge"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/simpleimageborder"/>
 
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Guess"
+        android:text="@string/guessbtntext"
         android:layout_below="@+id/inputGuessBox"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true" />
 
     <TextView

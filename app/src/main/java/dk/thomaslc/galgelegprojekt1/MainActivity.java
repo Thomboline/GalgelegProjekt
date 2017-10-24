@@ -1,35 +1,48 @@
 package dk.thomaslc.galgelegprojekt1;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StartFragment.OnFragSelected {
 
-    private SectionsPageAdapter pageAdapter;
-    private ViewPager viewPager;
+    private android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+    private android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+    private Fragment curFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        curFragment = new StartFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, curFragment);
+        fragmentTransaction.commit();
         setContentView(R.layout.activity_main);
 
-        pageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-
-        //Setup viewpager with sections adapter
-        viewPager = (ViewPager) findViewById(R.id.container);
-        initViewPager(viewPager);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
     }
 
-    public void initViewPager(ViewPager viewPager) {
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MainFragment(), "Main");
-        adapter.addFragment(new HelpFragment(), "Help");
-        adapter.addFragment(new AboutFragment(), "About");
-        viewPager.setAdapter(adapter);
+
+    @Override
+    public void onFragSelected(int id) {
+        switch (id) {
+            case R.id.start:
+                curFragment = new GameFragment();
+                break;
+            case R.id.help:
+                curFragment = new HelpFragment();
+                break;
+        }
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, curFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

@@ -3,4 +3,15 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="guessbtntext">Submit</string>
+    <string name="title">HANGMAN</string>
+    <string name="help">HOW TO PLAY</string>
+    <string name="helpText">To win, you must guess all the hidden letters.\n
+                            Be wary, though! The poor guy comes closer\n
+                            to death for every letter you miss. Guess all\n
+                            the letters without killing Mr. Stick. Then,\n
+                            and only then, can you deem yourself the\n
+                            ultimate HANGMAN champion and bask in\n
+                            the glory of a true hero.</string>
 </resources>
